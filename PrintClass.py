@@ -6,7 +6,7 @@ class PrintClass:
     @singledispatchmethod
     @classmethod
     def sayhi(cls, value): #Default base method for overloading, part of the Py3.8 specification/ documentation
-        raise NotImplementedError("Wrong type for import: " + value)
+        raise NotImplementedError("Value type has no overloaded method, please implement: " + value)
 
     @sayhi.register(int)
     @classmethod
