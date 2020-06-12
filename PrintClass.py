@@ -1,4 +1,5 @@
 from functools import singledispatchmethod
+from Stringwrapper import StringWrapper
 
 
 class PrintClass:
@@ -9,15 +10,18 @@ class PrintClass:
 
     @sayhi.register(int)
     @classmethod
-    def overloadedSayHi(cls, value): #Overloaded method is allowed any name, except for in this case: sayHi(), that would throw an error that is hard to understand
-        print("hi from int overloading")
+    def overloadedsayhi(cls, value): #Overloaded method is allowed any name, except for in this case: sayHi(), that would throw an error that is hard to understand
         print(value + value + value + value)
         return value
 
     @sayhi.register(str)
     @classmethod
-    def overloadedSayHi(cls, value):
-        print("hi from string overloading")
+    def overloadedsayhi(cls, value):
         print(value + value)
         return
 
+    @sayhi.register(StringWrapper)
+    @classmethod
+    def overloadedsayhi(cls, stringwrapper: StringWrapper):
+        print(stringwrapper.internalstring1 + stringwrapper.internalstring2)
+        return
